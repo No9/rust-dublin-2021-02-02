@@ -2,8 +2,7 @@ FROM quay.io/roche/default:1.4.0 as builder
 COPY functions.rs /app-build/src
 COPY lib.rs /app-build/src
 COPY .env /app-build/src
-RUN cargo build --release 
-RUN cargo test --lib --release  
+RUN cargo build --release
 FROM quay.io/roche/alpine-libgcc:3.12
 RUN addgroup -S rocheuser && adduser -S rocheuser -G rocheuser
 WORKDIR "/app"
